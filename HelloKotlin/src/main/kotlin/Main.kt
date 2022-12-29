@@ -1,12 +1,13 @@
 fun main(args: Array<String>) {
-    var interestingThings = arrayOf("kotlin", "java", "golang")
-
-    var abcmap = mapOf(1 to "a", 2 to "b", 3 to "c")
-
-    abcmap.forEach { key, value -> println("$key -> $value") }
-
-    println(abcmap)
+    var interestingThings = listOf("kotlin", "java", "golang")
+    sayGreeting("hello how are you")
+    sayGreeting("hello", "kotlin", "java", "golang")
 
 }
 
-fun sayGreeting(greeting: String, textToGreet: String) = println("$greeting - $textToGreet")
+fun sayGreeting(greeting: String, vararg itemsToGreet: String) {
+    println(greeting)
+    itemsToGreet.forEach { itemTogreet -> println("$greeting - $itemTogreet") }
+
+}
+
