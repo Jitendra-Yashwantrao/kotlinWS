@@ -18,4 +18,8 @@ fun main(args: Array<String>) {
         else ->
             println("case not found")
     }
+
+    println(getGreeting())
 }
+
+fun getGreeting() = "hello"
