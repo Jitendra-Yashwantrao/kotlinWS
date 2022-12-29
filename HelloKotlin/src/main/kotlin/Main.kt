@@ -1,25 +1,12 @@
 fun main(args: Array<String>) {
     var interestingThings = arrayOf("kotlin", "java", "golang")
-    println(interestingThings.size)
-    println(interestingThings[0])
-    println(interestingThings.get(1))
-    for (interestingThing in interestingThings) {
-        println(interestingThing)
-    }
 
-    println("other way")
+    var abcmap = mapOf(1 to "a", 2 to "b", 3 to "c")
 
-    interestingThings.forEach {
-        println(it)
-    }
+    abcmap.forEach { key, value -> println("$key -> $value") }
 
-    println("one more way")
+    println(abcmap)
 
-    interestingThings.forEach { interestingThings -> println(interestingThings) }
-
-    println("one more way to print index")
-
-    interestingThings.forEachIndexed { index, interestingThing -> println("$interestingThing is at index $index") }
 }
 
 fun sayGreeting(greeting: String, textToGreet: String) = println("$greeting - $textToGreet")
