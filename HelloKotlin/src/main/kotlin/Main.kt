@@ -4,6 +4,13 @@ fun main(args: Array<String>) {
     sayGreeting("hello", "kotlin", "java", "golang")
     sayGreeting("spread operator", *interestingThings)
 
+    greetPerson(name = "jitendra", greeting = "Awesome")
+    greetPerson()
+    greetPerson("hello", "kayuar")
+}
+
+fun greetPerson(greeting: String = "hello", name: String = "Kotlin") {
+    println("$greeting - $name")
 }
 
 fun sayGreeting(greeting: String, vararg itemsToGreet: String) {
