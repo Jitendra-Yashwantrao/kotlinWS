@@ -32,7 +32,16 @@ open class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider {
 fun main() {
 
 //    val provider = BasicInfoProvider()
-    val provider = FancyInformationProvider()
+    //   val provider = FancyInformationProvider()
+    val provider = object : PersonInfoProvider {
+        override val providerInfo: String
+            get() = "New info provider"
+
+        fun getSessionId() {
+            println("anonymous session ID")
+        }
+
+    }
     provider.printInfo(Person())
     provider.getSessionId()
     checkType(provider)
