@@ -1,21 +1,16 @@
 fun main(args: Array<String>) {
-    var interestingThings = arrayOf("kotlin", "java", "golang")
-    sayGreeting("hello how are you")
-    sayGreeting("hello", "kotlin", "java", "golang")
-    sayGreeting("spread operator", *interestingThings)
+    val person = Person("Jeet", "yash")
 
-    greetPerson(name = "jitendra", greeting = "Awesome")
-    greetPerson()
-    greetPerson("hello", "kayuar")
-}
+    person.firstName
+    person.lastName
+    person.nickName = "yashwant"
 
-fun greetPerson(greeting: String = "hello", name: String = "Kotlin") {
-    println("$greeting - $name")
-}
+    var person2 = Person()
+    //person2.firstName = "jyoti"
+    person.printInfo()
+    person2.printInfo()
 
-fun sayGreeting(greeting: String, vararg itemsToGreet: String) {
-    println(greeting)
-    itemsToGreet.forEach { itemTogreet -> println("$greeting - $itemTogreet") }
 
 }
+
 
