@@ -1,7 +1,7 @@
 import java.util.*
 
 enum class EntityType {
-    Easy, Medium, Hard;
+    Easy, Medium, Hard, Help;
 
     fun getFormatedName(): String {
         return name.lowercase().uppercase()
@@ -15,23 +15,42 @@ object EntityFactory {
             EntityType.Easy -> entityType.name
             EntityType.Hard -> entityType.getFormatedName()
             EntityType.Medium -> entityType.getFormatedName()
+            EntityType.Help -> entityType.getFormatedName()
         }
-        return Entity(id, name)
+        return when (entityType) {
+            EntityType.Easy -> return Entity.Easy(id, name)
+            EntityType.Medium -> return Entity.Medium(id, name)
+            EntityType.Hard -> return Entity.Hard(id, name, "high")
+            EntityType.Help -> return Entity.Help
+        }
     }
 
 }
 
-class Entity constructor(val id: String, val name: String) {
-    override fun toString(): String {
-        return "id -> $id, name -> $name"
+sealed class Entity() {
+
+    object Help : Entity() {
+        val name = "help"
     }
+
+    data class Easy(val id: String, val name: String) : Entity()
+    data class Medium(val id: String, val name: String) : Entity()
+
+    data class Hard(val id: String, val name: String, val difficulty: String) : Entity()
+
 }
 
 fun main() {
 
-    val entity = EntityFactory.create(EntityType.Easy)
-    println(entity)
+    val entity: Entity = EntityFactory.create(EntityType.Hard)
 
-    val mediumEntity = EntityFactory.create(EntityType.Medium)
-    println(mediumEntity)
+    val msg = when (entity) {
+        is Entity.Easy -> "easy class"
+        is Entity.Hard -> "hard class "
+        Entity.Help -> "help class"
+        is Entity.Medium -> "medium class"
+    }
+    println(msg)
+
+
 }
