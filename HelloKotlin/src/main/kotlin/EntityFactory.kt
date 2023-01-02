@@ -40,9 +40,13 @@ sealed class Entity() {
 
 }
 
+fun Entity.Medium.printInfo() {
+    println("Medium class extended method id- $id")
+}
+
 fun main() {
 
-    val entity: Entity = EntityFactory.create(EntityType.Hard)
+    val entity: Entity = EntityFactory.create(EntityType.Medium)
 
     val msg = when (entity) {
         is Entity.Easy -> "easy class"
@@ -52,5 +56,16 @@ fun main() {
     }
     println(msg)
 
+    val entity1 = Entity.Easy(id = "id", name = "name")
+    val entity2 = Entity.Easy(id = "id", name = "name")
+    if (entity1 == entity2) {
+        println("the are equal")
+    } else {
+        println("they are not equal")
+    }
+
+    if (entity is Entity.Medium) {
+        entity.printInfo()
+    }
 
 }
