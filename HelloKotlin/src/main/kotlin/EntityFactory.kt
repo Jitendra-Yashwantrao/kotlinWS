@@ -44,6 +44,9 @@ fun Entity.Medium.printInfo() {
     println("Medium class extended method id- $id")
 }
 
+val Entity.Medium.info: String
+    get() = "some info"
+
 fun main() {
 
     val entity: Entity = EntityFactory.create(EntityType.Medium)
@@ -66,6 +69,8 @@ fun main() {
 
     if (entity is Entity.Medium) {
         entity.printInfo()
+        println(entity.info)
     }
+
 
 }
