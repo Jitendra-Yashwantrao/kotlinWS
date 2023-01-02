@@ -34,4 +34,15 @@ fun main() {
 
     provider.printInfo(Person())
     provider.getSessionId()
+    checkType(provider)
+}
+
+fun checkType(personInfoProvider: PersonInfoProvider) {
+
+    if (personInfoProvider is SessionInfoProvider) {
+        println("provider is session info providr")
+        personInfoProvider.getSessionId()
+    } else {
+        println("provider is not session info provider")
+    }
 }
